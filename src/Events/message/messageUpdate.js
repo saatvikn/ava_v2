@@ -10,6 +10,10 @@ module.exports = class extends Event {
     if (!message.guild || old.content === message.content || message.author.bot)
       return;
 
+    if (old === message || old.content === message.content) return;
+
+    this.client.emit("message", message);
+
     const embed = new AvaEmbed()
       .setColor("BLUE")
       .setAuthor(

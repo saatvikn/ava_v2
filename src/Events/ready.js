@@ -27,7 +27,9 @@ module.exports = class extends Event {
     );
 
     const activities = [
-      `${this.client.guilds.cache.size} servers!`,
+      `${this.client.guilds.cache.size} ${
+        this.client.guilds.cache.size === 1 ? "server" : "servers"
+      }!`,
       `${this.client.channels.cache.size} channels!`,
       `${this.client.guilds.cache.reduce(
         (a, b) => a + b.memberCount,
