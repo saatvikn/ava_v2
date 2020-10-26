@@ -7,10 +7,13 @@ const { diffWordsWithSpace } = require("diff");
 
 module.exports = class extends Event {
   async run(old, message) {
-    if (!message.guild || old.content === message.content || message.author.bot)
+    if (
+      !message.guild ||
+      old === message ||
+      old.content === message.content ||
+      message.author.bot
+    )
       return;
-
-    if (old === message || old.content === message.content) return;
 
     this.client.emit("message", message);
 
